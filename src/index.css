@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@import "tailwindcss";
+
+*{
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+ @theme {
+  --color-primary: #6366F1;
+  --color-primary-dull: #818CF8;
+}
+
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom shadow for elevated elements */
+.shadow-3xl {
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
