@@ -22,6 +22,18 @@ export const AppContextProvider = ({children})=>{
     const [cartItems, setCartItems] = useState({})
     const [searchQuery, setSearchQuery] = useState({})
 
+  // Wake up backend service (for Render free tier)
+  const wakeUpBackend = async () => {
+    try {
+      // Non-blocking call to wake up the backend
+      axios.get('/').catch(() => {
+        // Silently fail - we just want to wake up the service
+      });
+    } catch (error) {
+      // Ignore errors - this is just to wake up the backend
+    }
+  }
+
   // Fetch Seller Status
   const fetchSeller = async ()=>{
     try {
@@ -122,6 +134,10 @@ const getCartAmount = () =>{
 
 
     useEffect(()=>{
+        // Wake up backend service immediately (non-blocking)
+        wakeUpBackend()
+        
+        // Fetch data normally
         fetchUser()
         fetchSeller()
         fetchProducts()
